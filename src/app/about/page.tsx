@@ -29,7 +29,7 @@ export default function AboutPage() {
             aria-hidden="true"
           >
             <Image
-              src="/images/truck3.jpg"
+              src="/images/truck2.jpg"
               alt="truck image"
               fill
               className="object-cover"
