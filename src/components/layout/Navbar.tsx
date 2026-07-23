@@ -32,7 +32,7 @@ export function Navbar() {
         "fixed top-0 z-50 w-full transition-all duration-300",
         scrolled
           ? "border-b border-[var(--color-border-dark)] bg-[var(--color-bg-dark)]/95 backdrop-blur-md"
-          : "bg-transparent"
+          : "bg-transparent",
       )}
     >
       <div className="container-site flex h-16 items-center justify-between md:h-20">

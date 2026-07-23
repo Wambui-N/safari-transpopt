@@ -1,6 +1,7 @@
 "use client";
 
-import type { FormEvent } from "react";
+import { usePathname } from "next/navigation";
+import { type FormEvent, useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,6 +14,31 @@ type ContactFormProps = {
 };
 
 export function ContactForm({ className, fullWidth = true }: ContactFormProps) {
+  const pathname = usePathname();
+  const [route, setRoute] = useState("");
+  const [dates, setDates] = useState("");
+  const [groupSize, setGroupSize] = useState("");
+
+  useEffect(() => {
+    if (pathname !== "/contact") return;
+
+    const stored = sessionStorage.getItem("savannaLeafBooking");
+    if (!stored) return;
+
+    try {
+      const booking = JSON.parse(stored) as {
+        destination?: string;
+        travelDates?: string;
+        groupSize?: string;
+      };
+      if (booking.destination) setRoute(booking.destination);
+      if (booking.travelDates) setDates(booking.travelDates);
+      if (booking.groupSize) setGroupSize(booking.groupSize);
+    } catch {
+      // Malformed sessionStorage value — leave the form empty.
+    }
+  }, [pathname]);
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
   };
@@ -38,11 +64,15 @@ export function ContactForm({ className, fullWidth = true }: ContactFormProps) {
         name="dates"
         type="text"
         placeholder="e.g. 12–15 March 2025"
+        value={dates}
+        onChange={(e) => setDates(e.target.value)}
         className="input-dark border"
       />
       <Input
         name="route"
         placeholder="e.g. Nairobi to Maasai Mara"
+        value={route}
+        onChange={(e) => setRoute(e.target.value)}
         className="input-dark border"
       />
       <Input
@@ -50,6 +80,8 @@ export function ContactForm({ className, fullWidth = true }: ContactFormProps) {
         type="number"
         placeholder="Group size"
         min={1}
+        value={groupSize}
+        onChange={(e) => setGroupSize(e.target.value)}
         className="input-dark border"
       />
       <Textarea
