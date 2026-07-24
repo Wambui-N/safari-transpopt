@@ -54,7 +54,7 @@ export function Footer() {
         <Separator className="my-8 bg-[var(--color-border-dark)]" />
 
         <div className="flex flex-col gap-2 font-small text-[var(--color-text-muted)] md:flex-row md:items-center md:justify-between">
-          <p>© 2025 {SITE_NAME}</p>
+          <p>© 2026 {SITE_NAME}</p>
           <p>Built by Made With Make</p>
         </div>
       </div>

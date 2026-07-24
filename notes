@@ -1,0 +1,11 @@
+Parallax on the hero image
+
+As the user scrolls down, the hero background image moves at a slower rate than the page — creates depth. With Lenis you get the scroll position cleanly, so the parallax is buttery instead of janky. The Land Cruiser slowly revealing itself as you enter the page is a strong first impression.
+
+Section reveal on scroll
+
+Pair Lenis with Framer Motion's useInView — as each section enters the viewport, elements animate in. Services cards stagger in one by one. Fleet photos slide up. How It Works steps reveal in sequence. Feels alive without being distracting.
+
+Scroll-linked navbar
+
+Use Lenis scroll position to control the navbar — background fades in as you pass the hero, maybe a subtle border appears. Smoother than a window scroll listener because Lenis gives you a normalized, eased value.

@@ -1,24 +1,14 @@
-import Image from "next/image";
 import Link from "next/link";
 
 import { HeroBookingBar } from "@/components/sections/HeroBookingBar";
+import { HeroParallaxBackground } from "@/components/sections/HeroParallaxBackground";
 import { Button } from "@/components/ui/button";
 import { HERO_TRUST_STATS, SITE_TAGLINE } from "@/lib/constants";
 
 export function Hero() {
   return (
     <section className="relative min-h-[70vh] overflow-hidden bg-[var(--color-bg-dark)] pb-24 sm:pb-16">
-      <Image
-        src="/images/truck1.jpg"
-        alt="Land Cruiser parked on a safari route"
-        fill
-        priority
-        className="object-cover"
-      />
-      <div
-        className="absolute inset-0 bg-gradient-to-t from-[var(--color-bg-dark)] via-[var(--color-bg-dark)]/40 to-[var(--color-bg-dark)]/70"
-        aria-hidden="true"
-      />
+      <HeroParallaxBackground />
 
       <div className="container-site relative flex min-h-screen flex-col justify-center pt-20 pb-8">
         <p className="font-label mb-4 text-[var(--color-text-muted)]">

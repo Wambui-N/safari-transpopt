@@ -1,7 +1,8 @@
 "use client";
 
+import { useLenis } from "lenis/react";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Menu } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
@@ -19,11 +20,8 @@ export function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
 
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 20);
-    onScroll();
-    window.addEventListener("scroll", onScroll, { passive: true });
-    return () => window.removeEventListener("scroll", onScroll);
+  useLenis((lenis) => {
+    setScrolled(lenis.scroll > 20);
   }, []);
 
   return (
@@ -48,9 +46,10 @@ export function Navbar() {
             <Link
               key={link.href}
               href={link.href}
-              className="text-[12px] font-normal tracking-wider text-[var(--color-text-muted)] uppercase transition-colors hover:text-[var(--color-text-light)]"
+              className="group relative text-[12px] font-normal tracking-wider text-[var(--color-text-muted)] uppercase transition-colors hover:text-[var(--color-text-light)]"
             >
               {link.label}
+              <span className="absolute bottom-0 left-0 h-px w-full origin-right scale-x-0 bg-[var(--color-text-light)] transition-transform duration-300 ease-out group-hover:origin-left group-hover:scale-x-100" />
             </Link>
           ))}
           <Button asChild>

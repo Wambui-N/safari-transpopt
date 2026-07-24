@@ -1,6 +1,6 @@
 export const SITE_NAME = "Savanna Leaf";
 export const SITE_TAGLINE = "Safari ground transport · Kenya";
-export const WHATSAPP_NUMBER = "+254 XXX XXX XXX";
+export const WHATSAPP_NUMBER = "+254 712 137 749";
 export const CONTACT_EMAIL = "hello@savannaleaf.com";
 export const RESPONSE_PROMISE = "We respond within a few hours";
 
@@ -56,13 +56,13 @@ export const FLEET = [
     name: "Toyota Land Cruiser V8",
     capacity: "Up to 7 passengers",
     features: ["4WD", "Roof hatch", "AC"],
-    imageSrc: "/images/fleet/cruiser-v8.jpg",
+    imageSrc: "/images/truck3.jpg",
   },
   {
     name: "Toyota Land Cruiser Prado",
     capacity: "Up to 5 passengers",
     features: ["4WD", "Comfort seating", "AC"],
-    imageSrc: "/images/fleet/cruiser-prado.jpg",
+    imageSrc: "/images/truck2.jpg",
   },
 ] as const;
 

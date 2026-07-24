@@ -1,3 +1,6 @@
+import Image from "next/image";
+
+import { RevealOnScroll } from "@/components/motion/RevealOnScroll";
 import { Badge } from "@/components/ui/badge";
 import { FLEET } from "@/lib/constants";
 
@@ -17,27 +20,34 @@ export function Fleet() {
         </p>
 
         <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible md:pb-0">
-          {FLEET.map((vehicle) => (
-            <article
+          {FLEET.map((vehicle, i) => (
+            <RevealOnScroll
               key={vehicle.name}
+              index={i}
               className="w-[85vw] shrink-0 snap-start md:w-auto"
             >
-              <div
-                className="mb-4 aspect-video overflow-hidden rounded-[var(--radius-md)] bg-[var(--color-bg-dark-2)]"
-                aria-hidden="true"
-              />
-              <h3 className="font-h3 text-[var(--color-text-light)]">
-                {vehicle.name}
-              </h3>
-              <p className="font-small mt-1 mb-3 text-[var(--color-text-muted)]">
-                {vehicle.capacity}
-              </p>
-              <div className="flex flex-wrap gap-1.5">
-                {vehicle.features.map((feature) => (
-                  <Badge key={feature}>{feature}</Badge>
-                ))}
-              </div>
-            </article>
+              <article>
+                <div className="relative mb-4 aspect-video overflow-hidden rounded-[var(--radius-md)] bg-[var(--color-bg-dark-2)]">
+                  <Image
+                    src={vehicle.imageSrc}
+                    alt={vehicle.name}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
+                <h3 className="font-h3 text-[var(--color-text-light)]">
+                  {vehicle.name}
+                </h3>
+                <p className="font-small mt-1 mb-3 text-[var(--color-text-muted)]">
+                  {vehicle.capacity}
+                </p>
+                <div className="flex flex-wrap gap-1.5">
+                  {vehicle.features.map((feature) => (
+                    <Badge key={feature}>{feature}</Badge>
+                  ))}
+                </div>
+              </article>
+            </RevealOnScroll>
           ))}
         </div>
       </div>
