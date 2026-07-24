@@ -36,7 +36,7 @@ const DESTINATIONS = [
 
 const fieldTriggerClass = (hasError?: boolean) =>
   cn(
-    "flex h-10 w-full items-center justify-between gap-2 rounded-[var(--radius-sm)] border bg-transparent px-3 text-left font-small text-[var(--color-text-light)] outline-none transition-colors focus-visible:border-[var(--color-accent)]",
+    "flex h-10 min-h-[44px] w-full items-center justify-between gap-2 rounded-[var(--radius-sm)] border bg-transparent px-3 text-left font-small text-[var(--color-text-light)] outline-none transition-colors focus-visible:border-[var(--color-accent)]",
     hasError ? "border-[var(--color-accent)]" : "border-[var(--color-border-dark)]"
   );
 
@@ -143,7 +143,7 @@ function GroupSizeStepper({
         type="button"
         aria-label="Decrease group size"
         onClick={() => onChange(Math.max(1, value - 1))}
-        className="text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-accent)]"
+        className="flex min-h-[44px] min-w-[44px] items-center justify-center text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-accent)]"
       >
         <CircleMinus className="size-5" />
       </button>
@@ -154,7 +154,7 @@ function GroupSizeStepper({
         type="button"
         aria-label="Increase group size"
         onClick={() => onChange(Math.min(20, value + 1))}
-        className="text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-accent)]"
+        className="flex min-h-[44px] min-w-[44px] items-center justify-center text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-accent)]"
       >
         <CirclePlus className="size-5" />
       </button>

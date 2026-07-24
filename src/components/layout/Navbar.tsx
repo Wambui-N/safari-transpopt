@@ -62,7 +62,7 @@ export function Navbar() {
             <button
               type="button"
               aria-label="Open menu"
-              className="inline-flex items-center justify-center text-[var(--color-text-light)]"
+              className="flex min-h-11 min-w-11 items-center justify-center text-[var(--color-text-light)]"
             >
               <Menu className="size-6" />
             </button>
@@ -71,18 +71,18 @@ export function Navbar() {
             <SheetHeader>
               <SheetTitle>{SITE_NAME}</SheetTitle>
             </SheetHeader>
-            <nav className="mt-8 flex flex-col gap-6">
+            <nav className="mt-8 flex flex-col">
               {NAV_LINKS.map((link) => (
                 <Link
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className="text-[12px] font-normal tracking-wider text-[var(--color-text-muted)] uppercase transition-colors hover:text-[var(--color-text-light)]"
+                  className="py-4 text-[18px] font-normal tracking-wider text-[var(--color-text-muted)] uppercase transition-colors hover:text-[var(--color-text-light)]"
                 >
                   {link.label}
                 </Link>
               ))}
-              <Button asChild className="mt-4 w-full">
+              <Button asChild className="mt-4 w-full min-h-[52px]">
                 <Link href="/contact" onClick={() => setOpen(false)}>
                   Get a quote
                 </Link>

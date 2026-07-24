@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <section className="bg-[var(--color-bg-dark)] pt-40 pb-24">
+      <section className="bg-[var(--color-bg-dark)] pt-32 pb-16 md:pt-40 md:pb-24">
         <div className="container-site">
           <p className="font-label mb-4 text-[var(--color-text-muted)]">
             About us

@@ -28,7 +28,7 @@ export function CtaBlock({
           {subline}
         </p>
 
-        <div className="mb-10 flex items-center justify-center gap-2 font-small text-[var(--color-text-muted)]">
+        <div className="mb-10 flex flex-wrap items-center justify-center gap-2 font-small text-[var(--color-text-muted)]">
           <MessageCircle
             className="size-4 text-[var(--color-accent)]"
             aria-hidden="true"
@@ -38,7 +38,7 @@ export function CtaBlock({
             href={getWhatsAppUrl(WHATSAPP_NUMBER)}
             target="_blank"
             rel="noopener noreferrer"
-            className="font-medium text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-hover)]"
+            className="inline-block py-2 font-medium text-[var(--color-accent)] transition-colors hover:text-[var(--color-accent-hover)]"
           >
             {WHATSAPP_NUMBER}
           </a>

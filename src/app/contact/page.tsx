@@ -17,7 +17,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section className="bg-[var(--color-bg-dark)] pt-40 pb-16">
+      <section className="bg-[var(--color-bg-dark)] pt-32 pb-12 md:pt-40 md:pb-16">
         <div className="container-site">
           <p className="font-label mb-4 text-[var(--color-text-muted)]">
             Get in touch
@@ -46,7 +46,7 @@ export default function ContactPage() {
                 href={getWhatsAppUrl(WHATSAPP_NUMBER)}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="font-small mt-2 inline-block text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-light)]"
+                className="font-small mt-2 inline-block py-2 text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-light)]"
               >
                 Message us →
               </Link>
@@ -63,7 +63,7 @@ export default function ContactPage() {
               </p>
               <a
                 href={`mailto:${CONTACT_EMAIL}`}
-                className="font-small mt-2 inline-block text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-light)]"
+                className="font-small mt-2 inline-block py-2 text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-light)]"
               >
                 Send email →
               </a>

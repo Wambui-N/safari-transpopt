@@ -23,28 +23,28 @@ export function Footer() {
             </p>
           </div>
 
-          <nav className="flex flex-col gap-3">
+          <nav className="flex flex-col">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="font-small text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-light)]"
+                className="inline-block py-2 font-small text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-light)]"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          <div className="flex flex-col gap-2 font-small text-[var(--color-text-muted)]">
+          <div className="flex flex-col font-small text-[var(--color-text-muted)]">
             <a
               href={`https://wa.me/${WHATSAPP_NUMBER.replace(/\D/g, "")}`}
-              className="transition-colors hover:text-[var(--color-text-light)]"
+              className="inline-block py-2 transition-colors hover:text-[var(--color-text-light)]"
             >
               {WHATSAPP_NUMBER}
             </a>
             <a
               href={`mailto:${CONTACT_EMAIL}`}
-              className="transition-colors hover:text-[var(--color-text-light)]"
+              className="inline-block py-2 transition-colors hover:text-[var(--color-text-light)]"
             >
               {CONTACT_EMAIL}
             </a>

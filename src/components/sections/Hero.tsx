@@ -38,9 +38,9 @@ export function Hero() {
             {HERO_TRUST_STATS.join(" · ")}
           </p>
         </div> */}
-      <div className="container-site absolute inset-x-0 bottom-8 z-10 pt-10 sm:bottom-12">
-        <HeroBookingBar />
-      </div>
+        <div className="relative z-10 mt-10 sm:absolute sm:inset-x-0 sm:bottom-12 sm:mt-0">
+          <HeroBookingBar />
+        </div>
       </div>
 
     </section>

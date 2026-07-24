@@ -60,13 +60,13 @@ function SheetContent({
         className={cn(
           "fixed z-50 flex flex-col gap-4 bg-[var(--color-bg-dark)] p-6 shadow-lg transition ease-in-out data-[state=closed]:duration-300 data-[state=open]:duration-500 data-[state=open]:animate-in data-[state=closed]:animate-out",
           side === "right" &&
-            "inset-y-0 right-0 h-full w-full max-w-sm border-l border-[var(--color-border-dark)] data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right",
+            "inset-y-0 right-0 h-full w-screen max-w-sm overflow-y-auto border-l border-[var(--color-border-dark)] data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right",
           className
         )}
         {...props}
       >
         {children}
-        <SheetPrimitive.Close className="absolute top-4 right-4 rounded-[var(--radius-sm)] opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 disabled:pointer-events-none">
+        <SheetPrimitive.Close className="absolute top-4 right-4 flex min-h-11 min-w-11 items-center justify-center rounded-[var(--radius-sm)] opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] focus:ring-offset-2 disabled:pointer-events-none">
           <XIcon className="size-5 text-[var(--color-text-light)]" />
           <span className="sr-only">Close</span>
         </SheetPrimitive.Close>

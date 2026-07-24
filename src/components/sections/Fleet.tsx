@@ -19,7 +19,7 @@ export function Fleet() {
           comfortable for your clients.
         </p>
 
-        <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-4 md:grid md:grid-cols-2 md:overflow-visible md:pb-0">
+        <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto scroll-pl-6 pb-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden md:grid md:grid-cols-2 md:overflow-visible md:pb-0">
           {FLEET.map((vehicle, i) => (
             <RevealOnScroll
               key={vehicle.name}
@@ -50,6 +50,9 @@ export function Fleet() {
             </RevealOnScroll>
           ))}
         </div>
+        <p className="mt-3 font-label text-[var(--color-text-muted)] md:hidden">
+          Swipe to explore →
+        </p>
       </div>
     </section>
   );

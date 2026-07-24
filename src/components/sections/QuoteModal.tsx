@@ -3,12 +3,17 @@
 import * as DialogPrimitive from "@radix-ui/react-dialog";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "lucide-react";
-import { useState } from "react";
+import { useState, type FocusEvent } from "react";
 
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { useMediaQuery } from "@/hooks/use-media-query";
 import { WHATSAPP_NUMBER } from "@/lib/constants";
 import { cn, getWhatsAppUrl } from "@/lib/utils";
+
+const scrollFieldIntoView = (e: FocusEvent<HTMLElement>) => {
+  e.currentTarget.scrollIntoView({ block: "center", behavior: "smooth" });
+};
 
 interface QuoteModalProps {
   open: boolean;
@@ -21,7 +26,7 @@ interface QuoteModalProps {
 
 const fieldClass = (hasError: boolean) =>
   cn(
-    "text-[var(--color-text-light)] outline-none focus-visible:border-[var(--color-accent)]",
+    "min-h-12 text-[var(--color-text-light)] outline-none focus-visible:border-[var(--color-accent)]",
     hasError ? "border-[var(--color-accent)]" : "border-[var(--color-border-dark)]"
   );
 
@@ -37,6 +42,7 @@ export function QuoteModal({
   const [contact, setContact] = useState("");
   const [nameError, setNameError] = useState(false);
   const [contactError, setContactError] = useState(false);
+  const isDesktop = useMediaQuery("(min-width: 640px)");
 
   const handleSubmit = () => {
     if (!name) {
@@ -83,13 +89,17 @@ Please let me know availability and pricing.`;
 
             <DialogPrimitive.Content asChild forceMount>
               <motion.div
-                initial={{ opacity: 0, scale: 0.96, y: 16 }}
-                animate={{ opacity: 1, scale: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.96, y: 8 }}
-                transition={{ duration: 0.3, ease: "easeOut" }}
-                className="fixed left-1/2 top-1/2 z-50 w-[calc(100%-2rem)] max-w-[480px] -translate-x-1/2 -translate-y-1/2 rounded-[var(--radius-lg)] border border-[var(--color-border-dark)] bg-[var(--color-bg-dark)]/97 p-6 backdrop-blur-md outline-none"
+                initial={isDesktop ? { opacity: 0, scale: 0.96, y: 16 } : { y: "100%" }}
+                animate={isDesktop ? { opacity: 1, scale: 1, y: 0 } : { y: 0 }}
+                exit={isDesktop ? { opacity: 0, scale: 0.96, y: 8 } : { y: "100%" }}
+                transition={
+                  isDesktop
+                    ? { duration: 0.3, ease: "easeOut" }
+                    : { type: "spring", damping: 30, stiffness: 300 }
+                }
+                className="fixed inset-0 z-50 flex h-dvh w-screen flex-col overflow-y-auto rounded-none border-0 bg-[var(--color-bg-dark)]/97 p-6 backdrop-blur-md outline-none sm:inset-auto sm:left-1/2 sm:top-1/2 sm:h-auto sm:w-[calc(100%-2rem)] sm:max-w-[480px] sm:-translate-x-1/2 sm:-translate-y-1/2 sm:rounded-[var(--radius-lg)] sm:border sm:border-[var(--color-border-dark)]"
               >
-                <DialogPrimitive.Close className="absolute right-4 top-4 text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-light)]">
+                <DialogPrimitive.Close className="absolute right-4 top-4 flex min-h-11 min-w-11 items-center justify-center text-[var(--color-text-muted)] transition-colors hover:text-[var(--color-text-light)]">
                   <X className="size-5" />
                   <span className="sr-only">Close</span>
                 </DialogPrimitive.Close>
@@ -136,6 +146,7 @@ Please let me know availability and pricing.`;
                         setName(e.target.value);
                         if (nameError) setNameError(false);
                       }}
+                      onFocus={scrollFieldIntoView}
                       className={fieldClass(nameError)}
                     />
                   </motion.div>
@@ -152,6 +163,7 @@ Please let me know availability and pricing.`;
                         setContact(e.target.value);
                         if (contactError) setContactError(false);
                       }}
+                      onFocus={scrollFieldIntoView}
                       className={fieldClass(contactError)}
                     />
                   </motion.div>
@@ -161,7 +173,11 @@ Please let me know availability and pricing.`;
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.3, ease: "easeOut" }}
                   >
-                    <Button type="button" onClick={handleSubmit} className="w-full">
+                    <Button
+                      type="button"
+                      onClick={handleSubmit}
+                      className="min-h-[52px] w-full"
+                    >
                       Send via WhatsApp →
                     </Button>
                   </motion.div>
